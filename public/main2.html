@@ -11,6 +11,8 @@
       <canvas id="myChart" width="400" height="320"></canvas>
     </div>
     <div>
+      <label>빌딩 아이디</label>
+      <input type="text" id="building_id" />
       <button id="chardatafromdb">그래프 그리기</button>
     </div>
   </body>
@@ -18,22 +20,26 @@
   <script>
     let myChart = undefined;
     const btn = document.getElementById('chardatafromdb');
+    const building_id = document.getElementById('building_id');
     btn.addEventListener('click', () => {
-      charDataFromDB();
+      charDataFromDB(building_id);
     });
 
     // 서버에 데이터 요청하고, 데이터 받아서 그래프 그린다
-    const charDataFromDB = () => {
+    const charDataFromDB = (bide) => {
       // 1)서버에 데이터 요청
-      fetch('/chartdatafromdb', {
+
+      fetch('/chartdatafromdbwithbid', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ bid: bide.value }),
       })
         .then((res) => res.json())
         .then((res) => {
           // 2) 받은 데이터로 그래프 그리기
+
           drawChart(res);
         });
     };
