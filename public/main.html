@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script src="https://cdn.jsdelivr.net/npm/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
@@ -58,24 +58,22 @@
           {
             label: '온도',
             data: temp_obj,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
+            borderColor: 'rgba(255, 99, 132)',
             borderWidth: 1,
           },
         ],
       };
       const config = {
         type: 'line',
-        data : data,
+        data: data,
         options: {
-          repponsive: true,
-          mainAspectRatio: false,
+          responsive: true,
+          maintainAspectRatio: false,
         },
       };
 
       // 그래프 그리기
       const myChart = new Chart(document.getElementById('myChart'), config);
-      }
-    
+    };
   </script>
 </html>
